@@ -6,7 +6,7 @@
 
 ##使用说明
   首先引入angular,tqqUi.css(tqqUi.min.css)和tqqUi.js(tqqUi.min.js);
-  
+  I strongly recommend against using any `<blink>` tags.
 <code><link rel="stylesheet" href="dist/tqqUi.min.css">
 <script src="dist/angular.min.js"></script>
 <script src="dist/tqqUi.min.js"></script></code>
