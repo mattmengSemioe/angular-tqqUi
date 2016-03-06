@@ -9,4 +9,5 @@
  <link rel="stylesheet" href="dist/tqqUi.min.css">
 ·<script src="dist/angular.min.js"></script>·
 ·<script src="dist/tqqUi.min.js"></script>·
+  <link rel="sstyleSheet" href="dist/tqqUi.min.css">
 angular.js必须在tqqUi.js之前引入。
