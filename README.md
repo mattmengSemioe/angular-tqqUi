@@ -8,6 +8,8 @@
   首先引入angular,tqqUi.css(tqqUi.min.css)和tqqUi.js(tqqUi.min.js);
   
 `<link rel="stylesheet" href="dist/tqqUi.min.css">`
+
 `<script src="dist/angular.min.js">``</script>`
+
 `<script src="dist/tqqUi.min.js">``</script>`
 angular.js必须在tqqUi.js之前引入。
