@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>tqqUi分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dist/tqqUi.min.css">
+</head>
+<body>
+<div ng-controller="pageController">
+  <div style="width:200px; height:300px;"></div>
+    {{page}}
+    <tqq-pagination ng-model="page" items-per-page="10" total-items="200" size-class=""></tqq-pagination>
+</div>
+<script src="dist/angular.min.js"></script>
+<script src="dist/tqqUi.min.js"></script>
+<script>
+    var app = angular.module('myApp',['tqq.ui']).controller('pageController',function(){
+
+    })
+
+</script>
+</body>
+</html>
