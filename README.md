@@ -17,7 +17,8 @@ angular.js必须在tqqUi.js之前引入。
 
 ***
 ##参数说明
-  ```total-items:列表总条数，必传。
+  ```
+  total-items:列表总条数，必传。
   max-size:同时存在的分页按钮的数量，默认5。
   ng-model:当前选中的页数，必传。
   items-per-page:当前页有多少条数据，必传。
@@ -32,7 +33,28 @@ angular.js必须在tqqUi.js之前引入。
   
 ##使用实例
 `
-<tqq-pagination ng-model="page" items-per-page="10" total-items="200" ></tqq-pagination>
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>tqqUi分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dist/tqqUi.min.css">
+</head>
+<body>
+<div ng-controller="pageController">
+  <div style="width:200px; height:300px;"></div>
+    {{page}}
+    <tqq-pagination ng-model="page" items-per-page="10" total-items="200" size-class=""></tqq-pagination>
+</div>
+<script src="dist/angular.min.js"></script>
+<script src="dist/tqqUi.min.js"></script>
+<script>
+    var app = angular.module('myApp',['tqq.ui']).controller('pageController',function(){
+    })
+</script>
+</body>
+</html>
 `
 
 
