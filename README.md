@@ -31,7 +31,9 @@ angular.js必须在tqqUi.js之前引入。
   ```
   
 ##使用实例
-`<tqq-pagination ng-model="page" items-per-page="10" total-items="200" >``</tqq-pagination>`
+`
+<tqq-pagination ng-model="page" items-per-page="10" total-items="200" ></tqq-pagination>
+`
 
 
 ####注：
