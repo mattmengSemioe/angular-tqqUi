@@ -17,17 +17,17 @@ angular.js必须在tqqUi.js之前引入。
 
 ***
 ##参数说明
-     *total-items:列表总条数，必传。
-     * max-size:同时存在的分页按钮的数量，默认5。
-     * ng-model:当前选中的页数，必传。
-     * items-per-page:当前页有多少条数据，必传。
-     * hide-last:布尔值。是否隐藏第一页和最后一页按钮，默认为false，
-     * first-text:跳到第一页按钮，默认是'《',可用字符串代替。
-     * last-text:跳到最后一页按钮，默认是'》',可用字符串代替。
-     * previous-text:跳到上一页按钮，默认是'<',可用字符串代替。
-     * next-text:跳到下一页按钮，默认是'>',可用字符串代替。
-     * size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
-     * tqq-change:变化函数，当ngModel的值改变是，执行这个函数。
+  ```total-items:列表总条数，必传。
+  max-size:同时存在的分页按钮的数量，默认5。
+  ng-model:当前选中的页数，必传。
+  items-per-page:当前页有多少条数据，必传。
+  hide-last:布尔值。是否隐藏第一页和最后一页按钮，默认为false，
+  first-text:跳到第一页按钮，默认是'《',可用字符串代替。
+  last-text:跳到最后一页按钮，默认是'》',可用字符串代替。
+  previous-text:跳到上一页按钮，默认是'<',可用字符串代替。
+  next-text:跳到下一页按钮，默认是'>',可用字符串代替。
+  size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
+  tqq-change:变化函数，当ngModel的值改变是，执行这个函数。```
   
 ##使用实例
 `<tqq-pagination ng-model="page" items-per-page="10" total-items="200" >``</tqq-pagination>`
