@@ -15,6 +15,11 @@
 
 angular.js必须在tqqUi.js之前引入。
 
+在模块初始的时候注入模块。
+```
+var app = angular.module('myApp',['tqq.ui'])
+```
+
 ***
 ##参数说明
   ```
