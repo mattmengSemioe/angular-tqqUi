@@ -23,6 +23,7 @@ dir.directive('tqqPagination',function(){
      * next-text:跳到下一页按钮，默认是'>',可用字符串代替。
      * size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
      * tqq-change:变化函数，当ngModel的值改变是，执行这个函数。
+     * item-select-hide:是否显示右边模块的选择每页显示条数的模块。默认为false,为true时隐藏。
      */
     function createPage(allCount,perPageItem,size,model){
         var page=[]
@@ -70,7 +71,8 @@ dir.directive('tqqPagination',function(){
             itemsPerPage:'=',
             ngModel:'=',
             hideLast:'=',
-            tqqChange:'&'
+            tqqChange:'&',
+            itemSelectHide:'='
         },
         link:function(scope,ele,atrs,dir){
             scope.atrs=atrs;
@@ -107,7 +109,7 @@ dir.directive('tqqPagination',function(){
                     scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
                     scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
                 }
-                _watchTotal = true;
+                 _watchTotal = true;
             });
             scope.$watch('itemsPerPage',function(){
                 if(_watchPage){
@@ -150,7 +152,7 @@ dir.directive('tqqPagination',function(){
         '<li ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Next" ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span aria-hidden="true" ng-if="!atrs.nextText">&rsaquo;</span></a></li>' +
         '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Last" ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span aria-hidden="true" ng-if="!atrs.lastText">&raquo;</span></a></li>' +
         '</ul>' +
-        '<ul class="pagination pagination-init {{atrs.sizeClass}}"><li><a href class="left" ng-click="pageSelect=!pageSelect" ng-class="{active:pageSelect}">{{ngModel}}</a><li><a href="" class="init">/</a></li></li> <li><a href class="right" ng-class="{active:numSelect}" ng-click="numSelect=!numSelect">{{pageNum}}</a></li>' +
+        '<ul ng-if="!itemSelectHide" class="pagination pagination-init {{atrs.sizeClass}}"><li><a href class="left" ng-click="pageSelect=!pageSelect" ng-class="{active:pageSelect}">{{ngModel}}</a><li><a href="" class="init">/</a></li></li> <li><a href class="right" ng-class="{active:numSelect}" ng-click="numSelect=!numSelect">{{pageNum}}</a></li>' +
         '<div class="page-list" ng-if="pageSelect"><span ng-repeat="data in allPageArr track by $index" ng-class="{active:ngModel===data}" ng-click="updatePage(data)">{{data}}</span></div>' +
         '<div class="page-list num-select" ng-if="numSelect"><div>每页显示条数</div><span ng-repeat="data in [10,20,50,100,200] track by $index" ng-class="{active:itemsPerPage===data}" ng-click="updateItem(data)">{{data}}</span></div></ul></nav>'
     }

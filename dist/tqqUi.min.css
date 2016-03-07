@@ -93,8 +93,8 @@
   .pagination-init .init {
     border-left-color: transparent;
     border-right-color: transparent;
-    font-size: 24px;
-    padding: 0 3px; }
+    padding-left: 3px;
+    padding-right: 3px; }
     .pagination-init .init:focus, .pagination-init .init:visited {
       background: #ffffff; }
     .pagination-init .init:hover {
@@ -109,12 +109,12 @@
     background: #eeeeee;
     color: #23527c; }
 
-.pagination-lg > li > a.init {
-  font-size: 33px; }
-
-.pagination-sm > li > a.init {
-  font-size: 19px; }
-
+/*.pagination-lg>li>a.init{
+  font-size:33px;
+}
+.pagination-sm>li>a.init{
+  font-size:19px;
+}*/
 .page-list {
   padding: 5px;
   position: absolute;
