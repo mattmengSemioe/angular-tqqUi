@@ -7,11 +7,11 @@
 ##使用说明
   首先引入angular,tqqUi.css(tqqUi.min.css)和tqqUi.js(tqqUi.min.js);
   
-`<link rel="stylesheet" href="dist/tqqUi.min.css">`
-
-`<script src="dist/angular.min.js">``</script>`
-
-`<script src="dist/tqqUi.min.js">``</script>`
+````
+<link rel="stylesheet" href="dist/tqqUi.min.css">
+<script src="dist/angular.min.js"></script>
+<script src="dist/tqqUi.min.js"></script>
+```
 
 angular.js必须在tqqUi.js之前引入。
 
@@ -27,7 +27,8 @@ angular.js必须在tqqUi.js之前引入。
   previous-text:跳到上一页按钮，默认是'<',可用字符串代替。
   next-text:跳到下一页按钮，默认是'>',可用字符串代替。
   size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
-  tqq-change:变化函数，当ngModel的值改变是，执行这个函数。```
+  tqq-change:变化函数，当ngModel的值改变是，执行这个函数。
+  ```
   
 ##使用实例
 `<tqq-pagination ng-model="page" items-per-page="10" total-items="200" >``</tqq-pagination>`
