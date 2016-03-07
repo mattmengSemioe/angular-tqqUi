@@ -34,6 +34,7 @@ var app = angular.module('myApp',['tqq.ui'])
   next-text:跳到下一页按钮，默认是'>',可用字符串代替。
   size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
   tqq-change:变化函数，当ngModel的值改变是，执行这个函数。
+  item-select-hide:是否显示右边模块的选择每页显示条数的模块。默认为false,为true时隐藏。
   ```
   
 ##使用实例
