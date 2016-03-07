@@ -135,6 +135,7 @@ dir.directive('tqqPagination',function(){
                         scope.ngModel=scope.pageNum;
                         break;
                     default:
+                        console.log(342)
                         scope.pageSelect=false;
                         scope.ngModel=type;
                 }
@@ -144,6 +145,12 @@ dir.directive('tqqPagination',function(){
                 scope.numSelect=false;
                 scope.itemsPerPage=val;
             }
+            scope.updateSelect=function(){
+                scope.pageSelect =! scope.pageSelect;
+            }
+            scope.updateSelectNum=function(){
+                scope.numSelect =! scope.numSelect;
+            }
         },
         template:'<nav><ul class="pagination mg-none {{atrs.sizeClass}}">' +
         '<li ng-if="!hideLast"  ng-class="{disabled:ngModel===1}"><a href aria-label="First" ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span aria-hidden="true" ng-if="!atrs.firstText">&laquo;</span></a></li>' +
@@ -152,7 +159,7 @@ dir.directive('tqqPagination',function(){
         '<li ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Next" ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span aria-hidden="true" ng-if="!atrs.nextText">&rsaquo;</span></a></li>' +
         '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Last" ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span aria-hidden="true" ng-if="!atrs.lastText">&raquo;</span></a></li>' +
         '</ul>' +
-        '<ul ng-if="!itemSelectHide" class="pagination pagination-init {{atrs.sizeClass}}"><li><a href class="left" ng-click="pageSelect=!pageSelect" ng-class="{active:pageSelect}">{{ngModel}}</a><li><a href="" class="init">/</a></li></li> <li><a href class="right" ng-class="{active:numSelect}" ng-click="numSelect=!numSelect">{{pageNum}}</a></li>' +
+        '<ul ng-if="!itemSelectHide" class="pagination pagination-init {{atrs.sizeClass}}"><li><a href class="left" ng-click="updateSelect()" ng-class="{active:pageSelect}">{{ngModel}}</a><li><a href="" class="init">/</a></li></li> <li><a href class="right" ng-class="{active:numSelect}" ng-click="updateSelectNum()">{{pageNum}}</a></li>' +
         '<div class="page-list" ng-if="pageSelect"><span ng-repeat="data in allPageArr track by $index" ng-class="{active:ngModel===data}" ng-click="updatePage(data)">{{data}}</span></div>' +
         '<div class="page-list num-select" ng-if="numSelect"><div>每页显示条数</div><span ng-repeat="data in [10,20,50,100,200] track by $index" ng-class="{active:itemsPerPage===data}" ng-click="updateItem(data)">{{data}}</span></div></ul></nav>'
     }
