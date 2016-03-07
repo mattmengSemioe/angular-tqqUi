@@ -32,7 +32,7 @@ angular.js必须在tqqUi.js之前引入。
   ```
   
 ##使用实例
-`
+```
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
@@ -55,7 +55,7 @@ angular.js必须在tqqUi.js之前引入。
 </script>
 </body>
 </html>
-`
+```
 
 
 ####注：
