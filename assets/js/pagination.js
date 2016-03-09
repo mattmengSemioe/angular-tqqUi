@@ -78,8 +78,6 @@ dir.directive('tqqPagination',function(){
                 throw '\"items-per-page\" is undefined \n 中文:\"items-per-page\"为必传参数。';
             if(!atrs.totalItems)
                 throw '\"total-items\" is undefined \n 中文:\"total-items\"为必传参数。';
-            if(!((scope.totalItems && typeof scope.totalItems === 'number') || +scope.totalItems === +scope.totalItems))
-                throw '\"total-items\" only Numbers \n 中文:\"total-items\"这个参数只能是数字。';
             var _watchModel,_watchTotal,_watchPage;
             scope.ngModel=scope.ngModel || 1;
             scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
