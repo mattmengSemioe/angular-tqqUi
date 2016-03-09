@@ -113,7 +113,11 @@ dir.directive('tqqPagination',function(){
             });
             scope.$watch('itemsPerPage',function(){
                 if(_watchPage){
-                    scope.ngModel = 1;
+                    if(scope.ngModel>1){
+                        scope.ngModel = 1;
+                    }else{
+                        scope.tqqChange()
+                    };
                     scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1);
                     scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
                     scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
