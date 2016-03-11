@@ -42,7 +42,7 @@ gulp.task('sass-min',function(){
 gulp.task('angular',function(){
     gulp.src(['./assets/js/*.js','./assets/js/*/*.js'])
         .pipe(ngAnnotate())
-        .pipe(concat('tqqUi.js'))
+         .pipe(concat('tqqUi.js'))
         .pipe(gulp.dest('./dist'))
 })
 //angular 编译合并压缩
