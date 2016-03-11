@@ -19,7 +19,6 @@ angular.js必须在tqqUi.js之前引入。
 ```
 var app = angular.module('myApp',['tqq.ui'])
 ```
-
 ***
 ##参数说明
   ```
