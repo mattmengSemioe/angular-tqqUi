@@ -10,20 +10,14 @@ dir.factory('loading',function(){
     var style=''
     return {
         show:function(code){
-            switch(code){
-                case 'two':style='ball-clip-rotate-multiple-two';
-                    break;
-                case 'three':style='ball-clip-rotate-multiple-three';
-                    break;
-                default:style="ball-clip-rotate-multiple";
-            }
+
             if(monitor){
                 var loadingBody = document.createElement('section');
                  loadingBody.className = 'load-box';
                  document.body.style.overflowY='hidden'
                 console.log(document.body)
                 document.body.appendChild(loadingBody);
-                document.getElementsByClassName('load-box')[0].innerHTML='<div class="load-container"><div class="'+style+'"></div>'
+                document.getElementsByClassName('load-box')[0].innerHTML=' <div class="load-container"><div class="loader"><div class="loader-inner line-spin-fade-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>'
                 monitor=false;
             }
         },

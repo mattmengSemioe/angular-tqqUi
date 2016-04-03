@@ -10,19 +10,17 @@
 <div ng-controller="pageController" style="padding:100px;">
   <div style="width:200px; height:3000px;"></div>
     <button ng-click="loadingShow()">点击开启loading</button>
-    <button ng-click="loadingShow('two')">loading二</button>
-    <button ng-click="loadingShow('three')">loading三</button>
     <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
 </div>
 <script src="dist/angular.min.js"></script>
 <script src="dist/tqqUi.js"></script>
 <script>
     var app = angular.module('myApp',['tqq.ui']).controller('pageController',function($scope,loading){
-        $scope.loadingShow=function(code){
+        $scope.loadingShow=function(){
             console.log(loading)
-            loading.show(code);
+            loading.show();
             setTimeout(function(){
-                loading.hide()
+//                loading.hide()
             },5000)
         }
     })
