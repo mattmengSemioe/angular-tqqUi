@@ -96,9 +96,12 @@ dir.directive('tqqPagination',function(){
                 }
                 _watchModel = true;
             });
-            scope.$watch('totalItems',function(){
-                if(_watchTotal){
+            scope.$watch('totalItems',function(e,a){
+                if(e>0&&a>0){
                     scope.ngModel = 1;
+                }
+                if(_watchTotal){
+
                     scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1);
                     scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
                     scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
