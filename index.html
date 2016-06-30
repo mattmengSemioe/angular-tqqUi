@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <title>tqqUi分页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="dist/tqqUi.css">
+    <link rel="stylesheet" href="dist/tqq-ui-pagination.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div ng-controller="pageController" style="padding:100px;">
   <div style="width:200px; height:3000px;"></div>
-    <button ng-click="loadingShow()">点击开启loading</button>
-    <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
+    <!--<button ng-click="loadingShow()">点击开启loading</button>-->
+    <div class="row">
+        <div class="col-sm-6">
+            <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
+        </div>
+        <div class="col-sm-6">
+            <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
+        </div>
+    </div>
+
+
 </div>
 <script src="dist/angular.min.js"></script>
-<script src="dist/tqqUi.js"></script>
+<script src="dist/tqq-ui-pagination.js"></script>
 <script>
     var app = angular.module('myApp',['tqq.ui']).controller('pageController',function($scope,loading){
         $scope.loadingShow=function(){

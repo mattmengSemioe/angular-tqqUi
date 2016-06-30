@@ -1,0 +1,78 @@
+@charset "UTF-8";
+.mg-none {
+  margin: 0; }
+
+.pagination-init {
+  margin: 0 0 0 10px;
+  position: relative; }
+  .pagination-init .init {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    padding-left: 3px;
+    padding-right: 3px; }
+    .pagination-init .init:focus, .pagination-init .init:visited {
+      background: #ffffff; }
+    .pagination-init .init:hover {
+      background: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent; }
+  .pagination-init .left {
+    border-right-color: transparent; }
+  .pagination-init .right {
+    border-left-color: transparent; }
+  .pagination-init .active {
+    background: #eeeeee;
+    color: #23527c; }
+
+/*.pagination-lg>li>a.init{
+  font-size:33px;
+}
+.pagination-sm>li>a.init{
+  font-size:19px;
+}*/
+.page-list {
+  padding: 5px;
+  position: absolute;
+  border: thin solid #eeeeee;
+  bottom: 37px;
+  right: 0;
+  z-index: 50;
+  background: #ffffff;
+  width: 250px;
+  max-height: 200px;
+  overflow: auto; }
+  .page-list span {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 0;
+    width: 40px;
+    margin: 2px;
+    border: thin solid #dddddd;
+    text-align: center; }
+    .page-list span:hover {
+      background: #dddddd; }
+    .page-list span.active {
+      background: #337ab7;
+      color: #ffffff; }
+
+.pagination-lg .page-list {
+  bottom: 47px;
+  width: 350px; }
+  .pagination-lg .page-list span {
+    font-size: 18px;
+    width: 60px; }
+
+.pagination-sm .page-list {
+  bottom: 31px;
+  width: 200px; }
+  .pagination-sm .page-list span {
+    font-size: 12px;
+    width: 30px; }
+
+.page-num-this {
+  margin-left: 5px !important; }
+  .page-num-this a {
+    border: thin solid #ddd !important; }
+
+.anniu {
+  font-family: '微软雅黑','黑体'; }

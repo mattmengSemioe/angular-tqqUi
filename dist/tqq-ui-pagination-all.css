@@ -223,6 +223,7 @@
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px; }
 
+@charset "UTF-8";
 .mg-none {
   margin: 0; }
 
@@ -262,41 +263,41 @@
   right: 0;
   z-index: 50;
   background: #ffffff;
-  width: 300px;
+  width: 250px;
   max-height: 200px;
   overflow: auto; }
-
-.page-list.num-select {
-  top: 37px;
-  height: 70px; }
-
-.page-list.num-select span {
-  width: 53px; }
-
-.page-list span {
-  display: inline-block;
-  cursor: pointer;
-  padding: 5px 0;
-  width: 40px;
-  margin: 2px;
-  border: thin solid #dddddd;
-  text-align: center; }
-
-.page-list span:hover {
-  background: #dddddd; }
-
-.page-list span.active {
-  background: #337ab7;
-  color: #ffffff; }
+  .page-list span {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 0;
+    width: 40px;
+    margin: 2px;
+    border: thin solid #dddddd;
+    text-align: center; }
+    .page-list span:hover {
+      background: #dddddd; }
+    .page-list span.active {
+      background: #337ab7;
+      color: #ffffff; }
 
 .pagination-lg .page-list {
-  bottom: 47px; }
-
-.pagination-lg .page-list.num-select {
-  top: 47px; }
+  bottom: 47px;
+  width: 350px; }
+  .pagination-lg .page-list span {
+    font-size: 18px;
+    width: 60px; }
 
 .pagination-sm .page-list {
-  bottom: 31px; }
+  bottom: 31px;
+  width: 200px; }
+  .pagination-sm .page-list span {
+    font-size: 12px;
+    width: 30px; }
 
-.pagination-sm .page-list.num-select {
-  top: 31px; }
+.page-num-this {
+  margin-left: 5px !important; }
+  .page-num-this a {
+    border: thin solid #ddd !important; }
+
+.anniu {
+  font-family: '微软雅黑','黑体'; }

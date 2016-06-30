@@ -5,9 +5,9 @@
  * Created by Administrator on 2016/2/28.
  */
 
-dir.directive('tqqPagination',function(){
+  dir.directive('tqqPagination',function(){
     /*
-     ##参数说明
+      ##参数说明
      *total-items:列表总条数，必传。
      * max-size:同时存在的分页按钮的数量，默认5。
      * ng-model:当前选中的页数，必传。
@@ -121,6 +121,7 @@ dir.directive('tqqPagination',function(){
                 }
                 _watchPage = true;
             });
+
             scope.updatePage=function(type){
                 switch (type){
                     case scope.judge.first:
@@ -141,27 +142,28 @@ dir.directive('tqqPagination',function(){
                         scope.ngModel=type;
                 }
 
+
             };
             scope.updateItem=function(val){
+                scope.pageSelect=false;
                 scope.numSelect=false;
                 scope.itemsPerPage=val;
             }
-            scope.updateSelect=function(){
-                scope.pageSelect =! scope.pageSelect;
-            }
-            scope.updateSelectNum=function(){
-                scope.numSelect =! scope.numSelect;
+            scope.updateShow=function(){
+               scope.pageSelect=!scope.pageSelect;
             }
         },
         template:'<nav><ul class="pagination mg-none {{atrs.sizeClass}}">' +
-        '<li ng-if="!hideLast"  ng-class="{disabled:ngModel===1}"><a href aria-label="First" ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span aria-hidden="true" ng-if="!atrs.firstText">&laquo;</span></a></li>' +
-        '<li ng-class="{disabled:ngModel===1}"><a href aria-label="Previous" ng-click="updatePage(judge.previous)"><span ng-if="atrs.previousText">{{atrs.previousText}}</span><span aria-hidden="true" ng-if="!atrs.previousText">&lsaquo;</span></a></li>' +
+        '<li ng-if="!hideLast"  ng-class="{disabled:ngModel===1}"><a href aria-label="First" ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span aria-hidden="true" ng-if="!atrs.firstText" class="anniu">&laquo;</span></a></li>' +
+        '<li ng-class="{disabled:ngModel===1}"><a href aria-label="Previous" ng-click="updatePage(judge.previous)"><span ng-if="atrs.previousText">{{atrs.previousText}}</span><span aria-hidden="true" ng-if="!atrs.previousText" class="anniu">&lsaquo;</span></a></li>' +
         '<li ng-repeat="val in pageArr track by $index" ng-class="{active:ngModel===val}"><a href ng-click="updatePage(val)">{{val}}</a></li>' +
-        '<li ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Next" ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span aria-hidden="true" ng-if="!atrs.nextText">&rsaquo;</span></a></li>' +
-        '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Last" ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span aria-hidden="true" ng-if="!atrs.lastText">&raquo;</span></a></li>' +
+        '<li ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Next" ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span aria-hidden="true" ng-if="!atrs.nextText"　class="anniu">&rsaquo;</span></a></li>' +
+        '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Last" ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span aria-hidden="true" ng-if="!atrs.lastText"　class="anniu">&raquo;</span></a></li>' +
         '</ul>' +
-        '<ul ng-if="!itemSelectHide" class="pagination pagination-init {{atrs.sizeClass}}"><li><a href class="left" ng-click="updateSelect()" ng-class="{active:pageSelect}">{{ngModel}}</a><li><a href="" class="init">/</a></li></li> <li><a href class="right" ng-class="{active:numSelect}" ng-click="updateSelectNum()">{{pageNum}}</a></li>' +
-        '<div class="page-list" ng-if="pageSelect"><span ng-repeat="data in allPageArr track by $index" ng-class="{active:ngModel===data}" ng-click="updatePage(data)">{{data}}</span></div>' +
-        '<div class="page-list num-select" ng-if="numSelect"><div>每页显示条数</div><span ng-repeat="data in [10,20,50,100,200] track by $index" ng-class="{active:itemsPerPage===data}" ng-click="updateItem(data)">{{data}}</span></div></ul></nav>'
+        '<ul ng-if="!itemSelectHide" class="pagination pagination-init page-num-this {{atrs.sizeClass}}"><li><a href ng-click="updateShow()" ng-class="{active:pageSelect}">{{ngModel}}/{{pageNum}}</a>' +
+         '<div class="page-list" ng-show="pageSelect">' +
+        '<div>每页显示</div><span ng-repeat="data in [10,20,50,100,200] track by $index" ng-class="{active:itemsPerPage===data}" ng-click="updateItem(data)">{{data}}</span>' +
+        '<div>页&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码</div>' +
+        '<span ng-repeat="data in allPageArr track by $index" ng-class="{active:ngModel===data}" ng-click="updatePage(data)">{{data}}</span></div>'
     }
 })

@@ -5,15 +5,17 @@
 ![alt text](/001.jpg "Title")
 
 ##使用说明
-  首先引入angular,tqqUi.css(tqqUi.min.css)和tqqUi.js(tqqUi.min.js);
+  首先引入angular,tqq-ui-pagination.css(tqq-ui-pagination.min.css)和tqq-ui-pagination.js(tqq-ui-pagination.min.js);
   
 ````
-<link rel="stylesheet" href="dist/tqqUi.min.css">
+<link rel="stylesheet" href="dist/tqq-ui-pagination-all.css">
 <script src="dist/angular.min.js"></script>
-<script src="dist/tqqUi.min.js"></script>
+<script src="dist/tqq-ui-pagination.js"></script>
 ```
 
-angular.js必须在tqqUi.js之前引入。
+angular.js必须在tqq-ui-pagination.js.js之前引入。
+
+如果你的项目中有bootstrap.css的话，你的css文件只需要引tqq-ui-pagination.css;
 
 在模块初始的时候注入模块。
 ```

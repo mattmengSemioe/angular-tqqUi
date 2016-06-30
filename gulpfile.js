@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     stripDebug = require('gulp-strip-debug');
 //生产环境输出
-gulp.task('p',['sass-min','angular-min']);
+gulp.task('p',['sass-min','angular-min','sass-all-min']);
 
 gulp.task('default',['watch-angular','watch-sass']);
 //监视编译angular
@@ -19,30 +19,51 @@ gulp.task('watch-angular',function(){
 })
 //监视sass
 gulp.task('watch-sass',function(){
-    gulp.watch(['./assets/sass/*.scss','./assets/sass/mixin/*.scss'],['sass']);
+    gulp.watch(['./assets/style/*.scss'],['sass']);
 })
-//sass编译，普通版（未压缩）
+//sass编译，普通版（未压缩）--未整合
 gulp.task('sass',function(){
-    gulp.src('./assets/sass/*.scss')
+    gulp.src('./assets/style/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/css'))
-        .pipe(concat('tqqUi.css'))
+        .pipe(concat('tqq-ui-pagination.css'))
         .pipe(gulp.dest('./dist'))
 })
-//sass编译，压缩版
+//sass编译，压缩版---未整合
 gulp.task('sass-min',function(){
-    gulp.src('./assets/sass/*.scss')
+    gulp.src('./assets/style/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/css'))
-        .pipe(concat('tqqUi.min.css'))
-        .pipe(gulp.dest('./dist'))
+        .pipe(concat('tqq-ui-pagination.min.css'))
         .pipe(minifycss())
+        .pipe(gulp.dest('./dist'))
 })
+
+//sass编译，普通版（未压缩） 整合
+gulp.task('sass-all',function(){
+    gulp.src(['./assets/sass/*.scss','./assets/style/*.scss'])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./src/all'))
+        .pipe(concat('tqq-ui-pagination-all.css'))
+        .pipe(gulp.dest('./dist'))
+})
+//sass编译，压缩版 整合
+gulp.task('sass-all-min',function(){
+    gulp.src(['./assets/sass/*.scss','./assets/style/*.scss'])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./src/css'))
+        .pipe(concat('tqq-ui-pagination-all.min.css'))
+        .pipe(minifycss())
+        .pipe(gulp.dest('./dist'))
+})
+
+
+
 //angular 编译-合并
 gulp.task('angular',function(){
     gulp.src(['./assets/js/*.js','./assets/js/*/*.js'])
         .pipe(ngAnnotate())
-         .pipe(concat('tqqUi.js'))
+         .pipe(concat('tqq-ui-pagination.js'))
         .pipe(gulp.dest('./dist'))
 })
 //angular 编译合并压缩
@@ -52,6 +73,6 @@ gulp.task('angular-min',function(){
         .pipe(ngMin({dynamic:false}))
         .pipe(stripDebug())  //console
         .pipe(uglify({outSourceMap:false}))
-        .pipe(concat('tqqUi.min.js'))
+        .pipe(concat('tqq-ui-pagination.min.js'))
         .pipe(gulp.dest('./dist'))
 })
