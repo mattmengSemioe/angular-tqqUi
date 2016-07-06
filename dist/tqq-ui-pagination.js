@@ -180,14 +180,17 @@ dir.factory('loading',function(){
             };
             scope.updateItem=function(val){
                 scope.pageSelect=false;
-                scope.numSelect=false;
+                //scope.numSelect=false;
                 scope.itemsPerPage=val;
             }
             scope.updateShow=function(){
-               scope.pageSelect=!scope.pageSelect;
+                scope.pageSelect=!scope.pageSelect;
+            };
+            scope.dismissSelect=function(){
+                scope.pageSelect=false;
             }
         },
-        template:'<nav><ul class="pagination mg-none {{atrs.sizeClass}}">' +
+        template:'<nav><div class="page-box" ng-if="pageSelect" ng-click="dismissSelect()"></div><ul class="pagination mg-none {{atrs.sizeClass}}">' +
         '<li ng-if="!hideLast"  ng-class="{disabled:ngModel===1}"><a href aria-label="First" ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span aria-hidden="true" ng-if="!atrs.firstText" class="anniu">&laquo;</span></a></li>' +
         '<li ng-class="{disabled:ngModel===1}"><a href aria-label="Previous" ng-click="updatePage(judge.previous)"><span ng-if="atrs.previousText">{{atrs.previousText}}</span><span aria-hidden="true" ng-if="!atrs.previousText" class="anniu">&lsaquo;</span></a></li>' +
         '<li ng-repeat="val in pageArr track by $index" ng-class="{active:ngModel===val}"><a href ng-click="updatePage(val)">{{val}}</a></li>' +
