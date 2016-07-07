@@ -10,7 +10,7 @@
 <body>
 <div ng-controller="pageController" style="padding:100px;">
   <div style="width:200px; height:3000px;"></div>
-    <!--<button ng-click="loadingShow()">点击开启loading</button>-->
+    <button ng-click="loadingShow()">点击开启loading</button>
     <div class="row">
         <div class="col-sm-6">
             <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
@@ -30,7 +30,7 @@
             console.log(loading)
             loading.show();
             setTimeout(function(){
-//                loading.hide()
+                loading.hide()
             },5000)
         }
     })

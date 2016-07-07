@@ -10,10 +10,10 @@ dir.factory('loading',function(){
             if(monitor){
                 var loadingBody = document.createElement('section');
                  loadingBody.className = 'load-box';
-                 document.body.style.overflowY='hidden'
+                  document.body.style.overflowY='hidden'
                 console.log(document.body)
                 document.body.appendChild(loadingBody);
-                document.getElementsByClassName('load-box')[0].innerHTML=' <div class="load-container"><div class="loader"><div class="loader-inner line-spin-fade-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>'
+                document.getElementsByClassName('load-box')[0].innerHTML=' <div class="load-container"><div class="loader"></div></div>'
                 monitor=false;
             }
         },
