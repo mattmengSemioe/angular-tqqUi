@@ -153,15 +153,15 @@
                 scope.pageSelect=!scope.pageSelect;
             };
             scope.dismissSelect=function(){
-                scope.pageSelect=false;
+                 scope.pageSelect=false;
             }
         },
         template:'<nav><div class="page-box" ng-if="pageSelect" ng-click="dismissSelect()"></div><ul class="pagination mg-none {{atrs.sizeClass}}">' +
-        '<li ng-if="!hideLast"  ng-class="{disabled:ngModel===1}"><a href aria-label="First" ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span aria-hidden="true" ng-if="!atrs.firstText" class="anniu">&laquo;</span></a></li>' +
-        '<li ng-class="{disabled:ngModel===1}"><a href aria-label="Previous" ng-click="updatePage(judge.previous)"><span ng-if="atrs.previousText">{{atrs.previousText}}</span><span aria-hidden="true" ng-if="!atrs.previousText" class="anniu">&lsaquo;</span></a></li>' +
+         '<li ng-if="!hideLast" ng-class="{disabled:ngModel===1}"><a href  ng-click="updatePage(judge.first)"><span ng-if="atrs.firstText">{{atrs.firstText}}</span><span  ng-if="!atrs.firstText"　class="anniu">&laquo;</span></a></li>' +
+         '<li ng-class="{disabled:ngModel===1}"><a href  ng-click="updatePage(judge.previous)"><span ng-if="atrs.previousText">{{atrs.previousText}}</span><span  ng-if="!atrs.previousText"　class="anniu">&lsaquo;</span></a></li>' +
         '<li ng-repeat="val in pageArr track by $index" ng-class="{active:ngModel===val}"><a href ng-click="updatePage(val)">{{val}}</a></li>' +
-        '<li ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Next" ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span aria-hidden="true" ng-if="!atrs.nextText"　class="anniu">&rsaquo;</span></a></li>' +
-        '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href aria-label="Last" ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span aria-hidden="true" ng-if="!atrs.lastText"　class="anniu">&raquo;</span></a></li>' +
+        '<li ng-class="{disabled:ngModel===pageNum}"><a href  ng-click="updatePage(judge.next)"><span ng-if="atrs.nextText">{{atrs.nextText}}</span><span  ng-if="!atrs.nextText"　class="anniu">&rsaquo;</span></a></li>' +
+        '<li ng-if="!hideLast" ng-class="{disabled:ngModel===pageNum}"><a href  ng-click="updatePage(judge.last)"><span ng-if="atrs.lastText">{{atrs.lastText}}</span><span  ng-if="!atrs.lastText"　class="anniu">&raquo;</span></a></li>' +
         '</ul>' +
         '<ul ng-if="!itemSelectHide" class="pagination pagination-init page-num-this {{atrs.sizeClass}}"><li><a href ng-click="updateShow()" ng-class="{active:pageSelect}">{{ngModel}}/{{pageNum}}</a>' +
          '<div class="page-list" ng-show="pageSelect">' +

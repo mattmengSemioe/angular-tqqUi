@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     stripDebug = require('gulp-strip-debug');
 //生产环境输出
-gulp.task('p',['sass-min','angular-min','sass-all-min']);
+gulp.task('p',['sass-min','angular-min','sass-all-min','sass-all']);
 
 gulp.task('default',['watch-angular','watch-sass']);
 //监视编译angular
