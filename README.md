@@ -1,11 +1,11 @@
-# tqqUi-angular-pagination
-##简介
-仿照bootstrapUI，根据自己的需求添加一些功能，首先ngModel绑定的当前页在插件初始化的时候如果已经存在这个变量并且大于1的时候不会将他初始成1，这样保存了绑定值。添加啦当前页码和最大页码，明确知道总页数，并且点击当前页可以选择总页码的数量，可以直接跳转到指定页，防止在页数太多的时候不能很好的定位到指定页码。点击最大页码可以选择每页显示的数量。
 
-![alt text](/001.jpg "Title")
+# angular-tqqUi
+CMS管理系统 开发中，将需要用到的组件整合，结合自身项目将组件优化修改，将大部分的机械化操作抽离成组件，其中有仿ui.bootstrap.pagination的分页插件，添加啦页码展开选择和调节每页显示数以及修改啦其每次都会初始当前页为1的机制，使得其能记录保存预览到的页数；开发啦table组件和tableFilter，由于每个列表都是从一个json里面挑选不同的字段出来显示，所以只要配置每个th叫什么？它对应的tr显示什么字段？由此开发table组件，只需传入ajax得到的json数组和title配置项，就能自动生成table，还可以控制title来控制是否显示对应的列，tableFilter组件就是做这事的。
+
+
 
 ##使用说明
-  首先引入angular,tqq-ui-pagination.css(tqq-ui-pagination.min.css)和tqq-ui-pagination.js(tqq-ui-pagination.min.js);
+  首先引入angular,tqq-ui.css(tqq-ui.min.css)和tqq-ui.js(tqq-ui.min.js);
   
 ````
 <link rel="stylesheet" href="dist/tqq-ui-pagination-all.css">
@@ -13,12 +13,12 @@
 <script src="dist/tqq-ui-pagination.js"></script>
 ```
 
-angular.js必须在tqq-ui-pagination.js.js之前引入。
+angular.js必须在tqq-ui.js之前引入。
 
 如果你的项目中有bootstrap.css的话，你的css文件只需要引tqq-ui-pagination.css;
 
 在模块初始的时候注入模块。
-```
+```sh
 var app = angular.module('myApp',['tqq.ui'])
 ```
 ***
