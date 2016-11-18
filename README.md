@@ -76,7 +76,18 @@ var app = angular.module('myApp',['tqq.ui'])
   table-checked:这是一个数组，每个数组的值类型为布尔值，记录或操作table的每一列是否为选中项。
   tqq-click(items,judge,key):这是一个方法，每个单元格都会触发这事件，里面会有三个参数，items是触发事件的整行的数据，judge是触发事件是属于哪列，key是触发事件的索引。
   ```
-
+###tableOptions  配置说明
+  ```
+  *  name {String}  table每一列的标题显示配置；如果是“@”会直接显示一个多选框。
+  *  defaultHide {Boolean} 此列默认是否隐藏。默认是false,不隐藏，
+  *  lock {Boolean} 此列是否锁定，锁定就不能修改defaultHide的值。默认是false,不锁定，
+  *  field {String | Array} 此列的取值规则，如果是String,应用表达式取值，如果第一个字符串是“@”就是字符串，否则为表达式，如果是“@”会直接显示一个多选框。
+  *  class {String} 此列的class规则，应用表达式取值，如果第一个字符串是“@”就是字符串，否则为表达式，
+  *  field.isHide {String} 此项是否隐藏，应用表达式取值，如果第一个字符串是“@”就是字符串，否则为表达式，
+  *  isHide {String} 此项是否隐藏，应用表达式取值，如果第一个字符串是“@”就是字符串，否则为表达式，
+  *  judge {String} 点击函数的标识符
+  *  isHover {String} 鼠标经过显示的内容
+   ```
 ###使用实例
 ```
 <!DOCTYPE html>
