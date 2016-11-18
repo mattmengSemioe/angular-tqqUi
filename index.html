@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="zh" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>tqqUi分页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="dist/tqq-ui-pagination.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/tqq-ui.css">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div ng-controller="pageController" style="padding:100px;">
-  <div style="width:200px; height:3000px;"></div>
-    <button ng-click="loadingShow()">点击开启loading</button>
     <div class="row">
         <div class="col-sm-6">
             <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
@@ -19,20 +17,29 @@
             <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
         </div>
     </div>
-
-
+    <div>
+        {{abc}}
+        <h3>这里是table组件</h3>
+        <tqq-table table-data="listData" class="table" table-options="options" table-checked="abc"></tqq-table>
+    </div>
 </div>
-<script src="dist/angular.min.js"></script>
-<script src="dist/tqq-ui-pagination.js"></script>
+<script src="//cdn.bootcss.com/angular.js/1.5.5/angular.min.js"></script>
+<script src="dist/tqq-ui.js"></script>
 <script>
     var app = angular.module('myApp',['tqq.ui']).controller('pageController',function($scope,loading){
-        $scope.loadingShow=function(){
-            console.log(loading)
-            loading.show();
-            setTimeout(function(){
-                loading.hide()
-            },5000)
-        }
+       $scope.options=[
+           {name:'@',field:'@',isHtml:true},
+           {name:'姓名',field:'name'},
+           {name:'性别',field:'sex'},
+            {name:'年龄',field:'year',isHover:"@dkfsjl"}
+       ];
+        $scope.listData=[
+             {name:'老李',sex:'男',year:23,child:true},
+            {name:'小刘',sex:'男',year:19,child:false},
+            {name:'小丽',sex:'女',year:18,child:false,},
+            {name:'老王',sex:'男',year:79,child:true},
+            {name:'大卫',sex:'男',year:50,child:true}
+        ]
     })
 </script>
 </body>

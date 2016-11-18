@@ -26,15 +26,15 @@ gulp.task('sass',function(){
     gulp.src('./assets/style/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/css'))
-        .pipe(concat('tqq-ui-pagination.css'))
+        .pipe(concat('tqq-ui.css'))
         .pipe(gulp.dest('./dist'))
-})
+});
 //sass编译，压缩版---未整合
 gulp.task('sass-min',function(){
     gulp.src('./assets/style/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/css'))
-        .pipe(concat('tqq-ui-pagination.min.css'))
+        .pipe(concat('tqq-ui.min.css'))
         .pipe(minifycss())
         .pipe(gulp.dest('./dist'))
 })
@@ -44,7 +44,7 @@ gulp.task('sass-all',function(){
     gulp.src(['./assets/sass/*.scss','./assets/style/*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/all'))
-        .pipe(concat('tqq-ui-pagination-all.css'))
+        .pipe(concat('tqq-ui-all.css'))
         .pipe(gulp.dest('./dist'))
 })
 //sass编译，压缩版 整合
@@ -52,7 +52,7 @@ gulp.task('sass-all-min',function(){
     gulp.src(['./assets/sass/*.scss','./assets/style/*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./src/css'))
-        .pipe(concat('tqq-ui-pagination-all.min.css'))
+        .pipe(concat('tqq-ui-all.min.css'))
         .pipe(minifycss())
         .pipe(gulp.dest('./dist'))
 })
@@ -63,7 +63,7 @@ gulp.task('sass-all-min',function(){
 gulp.task('angular',function(){
     gulp.src(['./assets/js/*.js','./assets/js/*/*.js'])
         .pipe(ngAnnotate())
-         .pipe(concat('tqq-ui-pagination.js'))
+         .pipe(concat('tqq-ui.js'))
         .pipe(gulp.dest('./dist'))
 })
 //angular 编译合并压缩
@@ -73,6 +73,6 @@ gulp.task('angular-min',function(){
         .pipe(ngMin({dynamic:false}))
         .pipe(stripDebug())  //console
         .pipe(uglify({outSourceMap:false}))
-        .pipe(concat('tqq-ui-pagination.min.js'))
+        .pipe(concat('tqq-ui.min.js'))
         .pipe(gulp.dest('./dist'))
 })
