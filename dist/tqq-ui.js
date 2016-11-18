@@ -227,6 +227,7 @@ dir.factory('loading',function(){
  * @argument tableOptions {Array} 整个table的列的配置，详情看tableOptions函数说明。
  * @argument tableChecked {Array} 如配置了多选框，这对象会接受一个数组，表示哪一行被选中。
  * @argument tqqClick(data,judge,key) {Function} 所有的table点击操作,此函数接收三个参数；data是操作的行的数据，judge是区分操作列，是配置时候judge的值，key是操作行的索引。
+ * @argument ngModel {Object} 这个对象里有三个属性，isAll：列表是否每列都选中啦，isOne：列表是否只是选中一列，isMony：列表是否选中了多列。
  */
 dir.directive('tqqTable', function () {
      return {
@@ -301,7 +302,7 @@ dir.directive('tqqTable', function () {
         '<tbody> ' +
         '<tr ng-if="!tableData"><td style="height:300px;" valign="middle" colspan="{{tableOptions.length}}">加载中...</td></tr>' +
         '<tr ng-if="tableData.length==0"><td style="height:300px;" valign="middle" colspan="{{tableOptions.length}}">没有数据</td></tr>' +
-        '<tr ng-repeat="(key,value) in tableData track by $index" class="pointer"  > ' +
+        '<tr ng-repeat="(key,value) in tableData track by $index" > ' +
         '<td ng-repeat="title in tableOptions track by $index" ng-class="{checkedNo:!tableChecked[key],checkedYes:tableChecked[key]}" ng-if="!title.defaultHide && !(title.field|tqqTableFieldIsArray)"><div class="{{title.class|tqqTableParse:value}}" ng-class = "{\'table-tr-hover\': title.isHover}" data-title = "{{title.isHover|tqqTableParse:value}}" ng-if="!title.isHtml && !(title.isHide|tqqTableParse:value)" ng-click="tdClick(value,title.judge,key)" ng-bind="title.field|tqqTableParse:value"></div><div class="{{title.class|tqqTableParse:value}}" ng-click="tdClick(value,title.judge,key)" ng-if="title.isHtml && !(title.isHide|tqqTableParse:value)" ng-class="{checkedNo:!tableChecked[key],checkedYes:tableChecked[key]}" ng-bind-html="title.field|tqqTableParse:value|toHtml"></div></td> ' +
         '<td ng-repeat="title in tableOptions track by $index" ng-if="!title.defaultHide && title.field|tqqTableFieldIsArray">' +
         '<div ng-repeat=" child in title.field track by $index" ng-if="!child.isHtml && !(child.isHide|tqqTableParse:value)" ng-click="tdClick(value,child.judge,key)" class="{{child.class|tqqTableParse:value}}" ng-bind="child.field|tqqTableParse:value"></div>' +
