@@ -2,7 +2,7 @@
 # angular-tqqUi
 CMS管理系统 开发中，将需要用到的组件整合，结合自身项目将组件优化修改，将大部分的机械化操作抽离成组件，其中有仿ui.bootstrap.pagination的分页插件，添加啦页码展开选择和调节每页显示数以及修改啦其每次都会初始当前页为1的机制，使得其能记录保存预览到的页数；开发啦table组件和tableFilter，由于每个列表都是从一个json里面挑选不同的字段出来显示，所以只要配置每个th叫什么？它对应的tr显示什么字段？由此开发table组件，只需传入ajax得到的json数组和title配置项，就能自动生成table，还可以控制title来控制是否显示对应的列，tableFilter组件就是做这事的。
 
-    [演示dome](http://tangqq.github.io/angular-tqqUi/)
+ [演示dome](http://tangqq.github.io/angular-tqqUi/)
 
 ##使用说明
   首先引入angular,tqq-ui.css(tqq-ui.min.css)和tqq-ui.js(tqq-ui.min.js);
