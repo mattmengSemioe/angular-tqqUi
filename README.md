@@ -22,7 +22,10 @@ angular.js必须在tqq-ui.js之前引入。
 var app = angular.module('myApp',['tqq.ui'])
 ```
 ***
-##参数说明
+
+## tqqPagination 指令：分页控制
+
+###参数说明
   ```
   total-items:列表总条数，必传。
   max-size:同时存在的分页按钮的数量，默认5。
@@ -38,7 +41,7 @@ var app = angular.module('myApp',['tqq.ui'])
   item-select-hide:是否显示右边模块的选择每页显示条数的模块。默认为false,为true时隐藏。
   ```
   
-##使用实例
+###使用实例
 ```
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
@@ -50,7 +53,7 @@ var app = angular.module('myApp',['tqq.ui'])
 </head>
 <body>
 <div ng-controller="pageController">
-  <div style="width:200px; height:300px;"></div>
+  <div></div>
     {{page}}
     <tqq-pagination ng-model="page" items-per-page="10" total-items="200" size-class=""></tqq-pagination>
 </div>
@@ -58,6 +61,55 @@ var app = angular.module('myApp',['tqq.ui'])
 <script src="dist/tqqUi.min.js"></script>
 <script>
     var app = angular.module('myApp',['tqq.ui']).controller('pageController',function(){
+    })
+</script>
+</body>
+</html>
+```
+## tqqTable 指令：table列表，使用配置json和数据数组生成一个列表。
+
+###参数说明
+  ```
+  table-data:数据数组，从后端返回的json数组，需要显示的源数据，必传。
+  table-options:配置，对每个列的显示规则的配置，必传。
+  ng-model:这个对象里有三个属性，isAll：列表是否每列都选中啦，isOne：列表是否只是选中一列，isMony：列表是否选中了多列。。
+  table-checked:这是一个数组，每个数组的值类型为布尔值，记录或操作table的每一列是否为选中项。
+  tqq-click(items,judge,key):这是一个方法，每个单元格都会触发这事件，里面会有三个参数，items是触发事件的整行的数据，judge是触发事件是属于哪列，key是触发事件的索引。
+  ```
+
+###使用实例
+```
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>tqqUi分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dist/tqqUi.min.css">
+</head>
+<body>
+<div ng-controller="pageController">
+  <div></div>
+    {{abc}}
+    <tqq-table table-data="listData" class="table" table-options="options" table-checked="abc"></tqq-table>
+</div>
+<script src="dist/angular.min.js"></script>
+<script src="dist/tqqUi.min.js"></script>
+<script>
+    var app = angular.module('myApp',['tqq.ui']).controller('pageController',function(){
+    $scope.options=[
+               {name:'@',field:'@',isHtml:true},
+               {name:'姓名',field:'name'},
+               {name:'性别',field:'sex'},
+                {name:'年龄',field:'year',isHover:"@dkfsjl"}
+           ];
+            $scope.listData=[
+                 {name:'老李',sex:'男',year:23,child:true},
+                {name:'小刘',sex:'男',year:19,child:false},
+                {name:'小丽',sex:'女',year:18,child:false,},
+                {name:'老王',sex:'男',year:79,child:true},
+                {name:'大卫',sex:'男',year:50,child:true}
+            ]
     })
 </script>
 </body>
