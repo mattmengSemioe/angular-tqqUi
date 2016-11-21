@@ -287,7 +287,7 @@ dir.directive('tqqTable', function () {
                 if (atrs.tqqClick) {
                     scope.tqqClick()(data, judge, key);
                 }
-                if (scope.tableChecked) {
+                if (scope.tableChecked && judge=='@') {
                     scope.tableChecked[key] = !scope.tableChecked[key];
                 }
             }
