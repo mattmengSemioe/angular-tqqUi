@@ -10,15 +10,20 @@
 <body>
 <div ng-controller="pageController" style="padding:100px;">
     <div class="row">
+        <hr>
+        <hr>
+        <hr>
         <div class="col-sm-6">
-            <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
+            {{page}}{{pageSize}}
+            <tqq-pagination ng-model="page" items-per-page="pageSize" total-items="200" item-select-hide="false"></tqq-pagination>
         </div>
         <div class="col-sm-6">
-            <tqq-pagination ng-model="page" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>
+            <!--<tqq-pagination ng-model="12" items-per-page="10" total-items="200" item-select-hide="false"></tqq-pagination>-->
         </div>
     </div>
     <div>
         {{abc}}
+
         <h3>这里是table组件</h3>
         <tqq-table table-data="listData" class="table" table-options="options" table-checked="abc"></tqq-table>
     </div>
@@ -27,6 +32,12 @@
 <script src="dist/tqq-ui.js"></script>
 <script>
     var app = angular.module('myApp',['tqq.ui']).controller('pageController',function($scope,loading){
+        $scope.pagaSize=10;  $scope.page=1
+        setTimeout(function(){
+            $scope.page=5
+            $scope.$apply()
+        },200)
+
        $scope.options=[
            {name:'@',field:'@',isHtml:true},
            {name:'姓名',field:'name'},

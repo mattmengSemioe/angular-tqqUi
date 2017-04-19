@@ -11,7 +11,6 @@ dir.factory('loading',function(){
                 var loadingBody = document.createElement('section');
                  loadingBody.className = 'load-box';
                   document.body.style.overflowY='hidden'
-                console.log(document.body)
                 document.body.appendChild(loadingBody);
                 document.getElementsByClassName('load-box')[0].innerHTML=' <div class="load-container"><div class="loader"></div></div>'
                 monitor=false;

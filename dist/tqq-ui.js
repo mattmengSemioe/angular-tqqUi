@@ -15,7 +15,6 @@ dir.factory('loading',function(){
                 var loadingBody = document.createElement('section');
                  loadingBody.className = 'load-box';
                   document.body.style.overflowY='hidden'
-                console.log(document.body)
                 document.body.appendChild(loadingBody);
                 document.getElementsByClassName('load-box')[0].innerHTML=' <div class="load-container"><div class="loader"></div></div>'
                 monitor=false;
@@ -39,7 +38,7 @@ dir.factory('loading',function(){
  * Created by Administrator on 2016/2/28.
  */
 
-  dir.directive('tqqPagination',function(){
+  dir.directive('tqqPagination',["$parse", function($parse){
     /*
       ##参数说明
      *total-items:列表总条数，必传。
@@ -56,8 +55,8 @@ dir.factory('loading',function(){
      * item-select-hide:是否显示右边模块的选择每页显示条数的模块。默认为false,为true时隐藏。
      */
     function createPage(allCount,perPageItem,size,model){
-        var page=[]
-        var pageCount=Math.ceil(allCount/perPageItem);
+        var page=[],
+            pageCount=Math.ceil(allCount/perPageItem);
         var middle_top = Math.ceil(size/2);
         var middle_bottom =Math.floor(size/2);
         if(pageCount<=size){
@@ -67,6 +66,7 @@ dir.factory('loading',function(){
         }else{
             if(model<=middle_top){
                 for(var a=1;a<=size;a++){
+
                     page.push(a);
                 }
             }else if(model>middle_top && model+middle_bottom<=pageCount){
@@ -82,11 +82,11 @@ dir.factory('loading',function(){
                 };
             };
         };
-        return page;
+         return page;
     };
     function createAllPage(allCount,perPageItem){
         var allPage=[];
-        var pageCount=Math.ceil(allCount/perPageItem)
+        var pageCount=Math.ceil(allCount/perPageItem);
         for(var i=1;i<=pageCount;i++){
             allPage.push(i)
         }
@@ -95,65 +95,55 @@ dir.factory('loading',function(){
     return {
         restrict:'EA',
         replace:true,
+        require:'?ngModel',
         scope:{
-            totalItems:'=',
-            maxSize:'=',
+            ngModel:'<',
+            totalItems:'<',
+            maxSize:'<',
             itemsPerPage:'=',
-            ngModel:'=',
-            hideLast:'=',
-            tqqChange:'&',
-            itemSelectHide:'='
+            hideLast:'<',
+            itemSelectHide:'<'
         },
-        link:function(scope,ele,atrs,dir){
-            scope.atrs=atrs;
-            if(!atrs.ngModel)
-                throw '\"ng-model\" is undefined \n 中文:\"ng-model\"为必传参数。';
-            if(!atrs.itemsPerPage)
-                throw '\"items-per-page\" is undefined \n 中文:\"items-per-page\"为必传参数。';
+        link:function(scope,ele,atrs,ngModel){
             if(!atrs.totalItems)
-                throw '\"total-items\" is undefined \n 中文:\"total-items\"为必传参数。';
-            var _watchModel,_watchTotal,_watchPage;
-            scope.ngModel=scope.ngModel || 1;
-            scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
-            scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1)
-            scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
+                throw '\"tqqPagination\"---\"total-items\" is undefined \n 中文:\"total-items\"为必传参数。';
+            scope.atrs=atrs;
+            function pageInit(){
+                scope.itemsPerPage=scope.itemsPerPage || 10;
+                scope.maxSize = scope.maxSize || 5;
+                scope.naModel= scope.ngModel||1;
+                scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage));
+                scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage,scope.maxSize,scope.ngModel)
+                scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage);
+            }
+            scope.$watch('totalItems',function(e){
+                 if(e){
+                     if(!angular.isNumber(e)){
+                         throw '\"tqqPagination\"---\"total-items\" type error \n 中文:\"total-items\"类型错误，必须是number类型。';
+                     }
+                    pageInit()
+                 }
+            });
+            scope.$watch('itemsPerPage',function(e){
+                if(e){
+                    pageInit();
+                    var currentTotal=scope.ngModel*scope.itemsPerPage
+                    if(currentTotal>scope.totalItems){
+                        scope.ngModel=scope.pageNum;
+                        ngModel.$setViewValue(scope.ngModel)
+                    }
+                }
+            });
             scope.judge={
                 first:'first',
                 previous:'previous',
                 next:'next',
-                last:'last',
-            }
-            scope.$watch('ngModel',function(ev,er){
-                if(_watchModel){
-                    scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1);
-                    scope.tqqChange()
+                last:'last'
+            };
+            ngModel.$formatters.push(function(e){
+                if(e && scope.totalItems){
+                    scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage,scope.maxSize||5,e);
                 }
-                _watchModel = true;
-            });
-            scope.$watch('totalItems',function(e,a){
-                if(e>0&&a>0){
-                    scope.ngModel = 1;
-                }
-                if(_watchTotal){
-
-                    scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1);
-                    scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
-                    scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
-                }
-                 _watchTotal = true;
-            });
-            scope.$watch('itemsPerPage',function(){
-                if(_watchPage){
-                    if(scope.ngModel>1){
-                        scope.ngModel = 1;
-                    }else{
-                        scope.tqqChange()
-                    };
-                    scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage || 10,scope.maxSize || 5,scope.ngModel || 1);
-                    scope.allPageArr=createAllPage(scope.totalItems,scope.itemsPerPage || 10);
-                    scope.pageNum=Math.ceil(scope.totalItems/(scope.itemsPerPage || 10));
-                }
-                _watchPage = true;
             });
 
             scope.updatePage=function(type){
@@ -171,16 +161,16 @@ dir.factory('loading',function(){
                         scope.ngModel=scope.pageNum;
                         break;
                     default:
-                        console.log(342)
                         scope.pageSelect=false;
                         scope.ngModel=type;
                 }
+                ngModel.$setViewValue(scope.ngModel)
+                scope.pageArr = createPage(scope.totalItems,scope.itemsPerPage,scope.maxSize||5,scope.ngModel);
 
 
             };
             scope.updateItem=function(val){
                 scope.pageSelect=false;
-                //scope.numSelect=false;
                 scope.itemsPerPage=val;
             }
             scope.updateShow=function(){
@@ -203,7 +193,7 @@ dir.factory('loading',function(){
         '<div>页&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码</div>' +
         '<span ng-repeat="data in allPageArr track by $index" ng-class="{active:ngModel===data}" ng-click="updatePage(data)">{{data}}</span></div>'
     }
-})
+}])
 /**
  * Created by admin on 2016/11/18.
  */
