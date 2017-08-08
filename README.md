@@ -7,11 +7,11 @@ CMS管理系统 开发中，将需要用到的组件整合，结合自身项目�
 ## 使用说明
   首先引入angular,tqq-ui.css(tqq-ui.min.css)和tqq-ui.js(tqq-ui.min.js);
   
-``
+```
 <link rel="stylesheet" href="dist/tqq-ui-pagination-all.css">
 <script src="dist/angular.min.js"></script>
 <script src="dist/tqq-ui-pagination.js"></script>
-``
+```
 
 angular.js必须在tqq-ui.js之前引入。
 
