@@ -18,15 +18,15 @@ angular.js必须在tqq-ui.js之前引入。
 如果你的项目中有bootstrap.css的话，你的css文件只需要引tqq-ui-pagination.css;
 
 在模块初始的时候注入模块。
-``
+```
 var app = angular.module('myApp',['tqq.ui'])
-``
+```
 ***
 
 ## tqqPagination 指令：分页控制
 
 ### 参数说明
-  ``
+  ```
   total-items:列表总条数，必传。
   max-size:同时存在的分页按钮的数量，默认5。
   ng-model:当前选中的页数，必传。
@@ -39,10 +39,10 @@ var app = angular.module('myApp',['tqq.ui'])
   size-class:组件大小，'pagination-lg'(大号)或者'pagination-sm'（小号）
   tqq-change:变化函数，当ngModel的值改变是，执行这个函数。
   item-select-hide:是否显示右边模块的选择每页显示条数的模块。默认为false,为true时隐藏。
-  ``
+  ```
   
 ### 使用实例
-``
+```
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
@@ -65,19 +65,19 @@ var app = angular.module('myApp',['tqq.ui'])
 </script>
 </body>
 </html>
-``
+```
 ## tqqTable 指令：table列表，使用配置json和数据数组生成一个列表。
 
 ### 参数说明
-  ``
+  ```
   table-data:数据数组，从后端返回的json数组，需要显示的源数据，必传。
   table-options:配置，对每个列的显示规则的配置，必传。
   ng-model:这个对象里有三个属性，isAll：列表是否每列都选中啦，isOne：列表是否只是选中一列，isMony：列表是否选中了多列。。
   table-checked:这是一个数组，每个数组的值类型为布尔值，记录或操作table的每一列是否为选中项。
   tqq-click(items,judge,key):这是一个方法，每个单元格都会触发这事件，里面会有三个参数，items是触发事件的整行的数据，judge是触发事件是属于哪列，key是触发事件的索引。
-  ``
+  ```
 ### tableOptions  配置说明
-  ``
+  ```
   *  name {String}  table每一列的标题显示配置；如果是“@”会直接显示一个多选框。
   *  defaultHide {Boolean} 此列默认是否隐藏。默认是false,不隐藏，
   *  lock {Boolean} 此列是否锁定，锁定就不能修改defaultHide的值。默认是false,不锁定，
@@ -87,9 +87,9 @@ var app = angular.module('myApp',['tqq.ui'])
   *  isHide {String} 此项是否隐藏，应用表达式取值，如果第一个字符串是“@”就是字符串，否则为表达式，
   *  judge {String} 点击函数的标识符
   *  isHover {String} 鼠标经过显示的内容
-   ``
+   ```
 ### 使用实例
-``
+```
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
@@ -125,7 +125,7 @@ var app = angular.module('myApp',['tqq.ui'])
 </script>
 </body>
 </html>
-``
+```
 
 
 #### 注：
